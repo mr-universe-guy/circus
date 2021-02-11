@@ -1,0 +1,6 @@
+rootProject.name = 'Circus'
+
+include ':Game'
+include ':Test'
+include ':Asset'
+
