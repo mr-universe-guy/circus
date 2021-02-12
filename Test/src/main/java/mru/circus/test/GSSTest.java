@@ -10,6 +10,10 @@ import com.simsilica.state.GameSystemsState;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import mru.circus.Games;
+import mru.circus.physics.PhysicsSystem;
+import org.dyn4j.dynamics.TimeStep;
+import org.dyn4j.world.PhysicsWorld;
+import org.dyn4j.world.listener.StepListenerAdapter;
 
 /**
  *

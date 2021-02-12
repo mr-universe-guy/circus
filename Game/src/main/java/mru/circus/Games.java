@@ -26,7 +26,7 @@ public class Games {
         GameSystemsState gss = new GameSystemsState(false);
         //physics systems
         PhysicsSystem ps = new PhysicsSystem();
-        gss.addSystem(ps);
+        gss.register(PhysicsSystem.class, ps);
         return gss;
     }
 }
