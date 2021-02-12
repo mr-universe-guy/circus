@@ -5,17 +5,26 @@
  */
 package mru.circus;
 
+import com.jme3.app.SimpleApplication;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Matt
  */
-public class CircusApp {
+public class CircusApp extends SimpleApplication{
+    
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        CircusApp app = new CircusApp();
+        app.start();
     }
-    
+
+    @Override
+    public void simpleInitApp() {
+        System.out.println("Hello World");
+    }
 }
