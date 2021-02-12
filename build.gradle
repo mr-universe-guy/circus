@@ -1,7 +1,7 @@
 allprojects {
     repositories {
         jcenter()
-        mavenLocal()
+        mavenCentral()
     }
 }
 
@@ -19,5 +19,6 @@ subprojects {
         implementation 'com.simsilica:lemur-proto:1.11.0'
         implementation 'com.simsilica:sio2:1.5.0'
         implementation 'com.simsilica:sim-math:1.4.0'
+        implementation 'org.dyn4j:dyn4j:4.1.2'
     }
 }

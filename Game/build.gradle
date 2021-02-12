@@ -2,10 +2,6 @@ apply plugin: 'application'
 
 mainClassName = 'mru.circus.CircusApp'
 
-repositories {
-    jcenter()
-}
-
 dependencies {
     compile project(':Asset')
 }
