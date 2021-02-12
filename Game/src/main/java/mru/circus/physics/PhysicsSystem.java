@@ -5,6 +5,7 @@
  */
 package mru.circus.physics;
 
+import com.simsilica.es.EntityData;
 import com.simsilica.sim.AbstractGameSystem;
 import com.simsilica.sim.SimTime;
 import org.dyn4j.dynamics.PhysicsBody;
@@ -18,11 +19,13 @@ import org.dyn4j.world.listener.StepListener;
 public class PhysicsSystem extends AbstractGameSystem{
     private final World physWorld = new World();
     private final double timeStep = 1.0/60;
+    private EntityData data;
 
     @Override
     protected void initialize() {
         System.out.println("Hello Physics");
         physWorld.getSettings().setStepFrequency(timeStep);
+        data = getManager().get(EntityData.class);
     }
 
     @Override

@@ -5,6 +5,11 @@
  */
 package mru.circus;
 
+import com.jme3.app.SimpleApplication;
+import com.jme3.asset.AssetManager;
+import com.jme3.renderer.Camera;
+import com.simsilica.es.EntityData;
+import com.simsilica.es.base.DefaultEntityData;
 import com.simsilica.state.GameSystemsState;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,10 +25,17 @@ public class Games {
      * Starts necessary game systems in a orderly fashion
      * @return 
      */
-    public static final GameSystemsState startSystems(){
+    public static final GameSystemsState startSystems(SimpleApplication app){
         LOG.log(Level.FINE, "Starting game systems");
         //init gss
         GameSystemsState gss = new GameSystemsState(false);
+        //Simple application
+        gss.register(AssetManager.class, app.getAssetManager());
+        gss.register(Camera.class, app.getCamera());
+        gss.register(Scene.class, new Scene(app.getRootNode(), app.getGuiNode()));
+        //Entity
+        EntityData data = new DefaultEntityData();
+        gss.register(EntityData.class, data);
         //physics systems
         PhysicsSystem ps = new PhysicsSystem();
         gss.register(PhysicsSystem.class, ps);
