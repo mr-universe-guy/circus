@@ -13,9 +13,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import mru.circus.Games;
 import mru.circus.entity.EntityFactory;
-import mru.circus.entity.NameData;
-import mru.circus.entity.NameSystem;
-import mru.circus.entity.PositionData;
 import org.dyn4j.geometry.Vector2;
 
 /**
@@ -24,7 +21,6 @@ import org.dyn4j.geometry.Vector2;
  */
 public class GSSTest extends SimpleApplication{
     private static Logger BASELOG = Logger.getLogger(GSSTest.class.getPackageName());
-    private int numNames = 0;
     private GameSystemsState gss;
     
     public static void main(String[] args) {
@@ -46,5 +42,6 @@ public class GSSTest extends SimpleApplication{
 
     @Override
     public void simpleUpdate(float tpf) {
+        
     }
 }

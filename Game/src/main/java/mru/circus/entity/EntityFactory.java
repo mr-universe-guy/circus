@@ -19,7 +19,9 @@ public class EntityFactory {
         data.setComponents(id,
                 new PositionData(pos),
                 new NameData(name),
-                new ModelData(ModelData.DEBUG_CUBE)
+                new ModelData(ModelData.DEBUG_CUBE),
+                new FlightData(1.0),
+                new MovementDriver(new Vector2(1.0,0))
         );
         return id;
     }
