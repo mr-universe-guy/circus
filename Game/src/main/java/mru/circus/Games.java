@@ -25,7 +25,7 @@ public class Games {
      * Starts necessary game systems in a orderly fashion
      * @return 
      */
-    public static final GameSystemsState startSystems(SimpleApplication app){
+    public static GameSystemsState startSystems(SimpleApplication app){
         LOG.log(Level.FINE, "Starting game systems");
         //init gss
         GameSystemsState gss = new GameSystemsState(false);
@@ -39,6 +39,8 @@ public class Games {
         //physics systems
         PhysicsSystem ps = new PhysicsSystem();
         gss.register(PhysicsSystem.class, ps);
+        //finish
+//        app.getStateManager().attach(gss);
         return gss;
     }
 }

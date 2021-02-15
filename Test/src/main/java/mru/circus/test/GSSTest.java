@@ -6,14 +6,16 @@
 package mru.circus.test;
 
 import com.jme3.app.SimpleApplication;
+import com.simsilica.es.EntityData;
+import com.simsilica.es.EntityId;
 import com.simsilica.state.GameSystemsState;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import mru.circus.Games;
-import mru.circus.physics.PhysicsSystem;
-import org.dyn4j.dynamics.TimeStep;
-import org.dyn4j.world.PhysicsWorld;
-import org.dyn4j.world.listener.StepListenerAdapter;
+import mru.circus.entity.NameData;
+import mru.circus.entity.NameSystem;
+import mru.circus.entity.PositionData;
+import org.dyn4j.geometry.Vector2;
 
 /**
  *
@@ -21,6 +23,8 @@ import org.dyn4j.world.listener.StepListenerAdapter;
  */
 public class GSSTest extends SimpleApplication{
     private static Logger BASELOG = Logger.getLogger(GSSTest.class.getPackageName());
+    private int numNames = 0;
+    private GameSystemsState gss;
     
     public static void main(String[] args) {
         //logging
@@ -32,7 +36,22 @@ public class GSSTest extends SimpleApplication{
     
     @Override
     public void simpleInitApp() {
-        GameSystemsState gss = Games.startSystems();
+        System.out.println("Starting GSSTest");
+        gss = Games.startSystems(this);
+        gss.addSystem(new NameSystem());
         stateManager.attach(gss);
+    }
+
+    @Override
+    public void simpleUpdate(float tpf) {
+        if (numNames < 1) spawnName();
+    }
+
+    private void spawnName() {
+        System.out.println("Spawning name");
+        EntityData data = gss.get(EntityData.class);
+        EntityId id = data.createEntity();
+        data.setComponents(id, new NameData ("Test name"), new PositionData(new Vector2(150,150)));
+        numNames++;
     }
 }
