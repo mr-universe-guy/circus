@@ -12,6 +12,7 @@ import com.simsilica.state.GameSystemsState;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import mru.circus.Games;
+import mru.circus.entity.EntityFactory;
 import mru.circus.entity.NameData;
 import mru.circus.entity.NameSystem;
 import mru.circus.entity.PositionData;
@@ -38,20 +39,12 @@ public class GSSTest extends SimpleApplication{
     public void simpleInitApp() {
         System.out.println("Starting GSSTest");
         gss = Games.startSystems(this);
-        gss.addSystem(new NameSystem());
+        EntityData data = gss.get(EntityData.class);
+        EntityId playerId = EntityFactory.createTestPlayer(data, "Player", new Vector2(0,0));
         stateManager.attach(gss);
     }
 
     @Override
     public void simpleUpdate(float tpf) {
-        if (numNames < 1) spawnName();
-    }
-
-    private void spawnName() {
-        System.out.println("Spawning name");
-        EntityData data = gss.get(EntityData.class);
-        EntityId id = data.createEntity();
-        data.setComponents(id, new NameData ("Test name"), new PositionData(new Vector2(150,150)));
-        numNames++;
     }
 }

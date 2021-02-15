@@ -13,6 +13,7 @@ import com.simsilica.es.base.DefaultEntityData;
 import com.simsilica.state.GameSystemsState;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import mru.circus.entity.ModelSystem;
 import mru.circus.physics.PhysicsSystem;
 
 /**
@@ -39,6 +40,8 @@ public class Games {
         //physics systems
         PhysicsSystem ps = new PhysicsSystem();
         gss.register(PhysicsSystem.class, ps);
+        //Visual
+        gss.addSystem(new ModelSystem());
         //finish
 //        app.getStateManager().attach(gss);
         return gss;
