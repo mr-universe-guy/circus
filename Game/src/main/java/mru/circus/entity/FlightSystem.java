@@ -87,7 +87,7 @@ public class FlightSystem extends AbstractGameSystem{
             }
         }
     }
-    
+        
     private class Flyer{
         private EntityId id;
         private double speed;
